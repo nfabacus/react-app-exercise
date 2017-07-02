@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { withRouter } from 'react-router-dom'
 import {
   Card, CardActions, CardHeader, CardMedia, CardTitle
 } from 'material-ui/Card'
@@ -8,32 +7,12 @@ import {
 import View from '../layout/View'
 
 class UserProfile extends Component {
-  constructor() {
-    super()
-    this.state = { username: null }
-  }
-
-  componentDidMount() {
-    this.fetchUser(this.props.match.params.username)
-  }
-
-  fetchUser(username) {
-    fetch(`/data/users/${username}.json`, {
-        method: 'get'
-    }).then((response) => {
-        return response.json()
-    }).then((data) => {
-        this.setState({user : data})
-    }).catch((err)=> {
-        console.log(err)
-    })
-  }
 
   render() {
-    let user = this.state.user
+    let user = this.props.user
     let username = this.props.match.params.username
     if (user && user.username !== username) {
-      this.fetchUser(username)
+      this.props.fetchUser(username)
     }
     let fullname = ''
     let email = ''

@@ -8,39 +8,21 @@ import withWidth from 'material-ui/utils/withWidth'
 import { Route } from 'react-router-dom'
 
 import View from '../layout/View'
-import UserProfile from './UserProfile'
+import UserProfileContainer from './UserProfileContainer'
 
 class UserList extends Component {
-  constructor() {
-    super()
-    this.state = {
-      users: []
-    }
-  }
-
-  componentDidMount() {
-    fetch('/data/users.js', {
-        method: 'get'
-    }).then((response) => {
-        return response.json()
-    }).then((data) => {
-        this.setState({ users: data })
-    }).catch((err)=> {
-        console.log(err)
-    })
-  }
 
   showUserProfile(user) {
     this.props.history.push(`/users/${user.username}`)
   }
 
   render() {
-    const { match, width } = this.props
+    const { match, width, history } = this.props
     
     return (
       <View style={{ display: 'flex' }}>
         <View>
-          { this.state.users.map(user => (
+          { this.props.users.map(user => (
             <ListItem
               onClick={this.showUserProfile.bind(this, user)} key={user.username} style={{color: "black"}}
               primaryText={ `${user.name.first} ${user.name.last}`}
@@ -49,7 +31,7 @@ class UserList extends Component {
             />
           ))}
         </View>
-        <Route path={`${match.url}/:username`} component={UserProfile} />
+        <Route path={`${match.url}/:username`} component={UserProfileContainer} />
       </View>
     )
   }
