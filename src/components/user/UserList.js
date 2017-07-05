@@ -5,6 +5,7 @@ import ActionGrade from 'material-ui/svg-icons/action/grade'
 import Avatar from 'material-ui/Avatar'
 import { pinkA200 } from 'material-ui/styles/colors'
 import withWidth from 'material-ui/utils/withWidth'
+
 import { Route } from 'react-router-dom'
 
 import View from '../layout/View'
@@ -18,7 +19,7 @@ class UserList extends Component {
 
   render() {
     const { match, width, history } = this.props
-    
+
     return (
       <View style={{ display: 'flex' }}>
         <View>

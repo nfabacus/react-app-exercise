@@ -1,15 +1,16 @@
 import React, { Component } from 'react'
-import { withRouter } from 'react-router-dom'
+// import { withRouter } from 'react-router-dom'
 import UserProfile from './UserProfile'
-import { Route } from 'react-router-dom'
+// import { Route } from 'react-router-dom'
 
-class UserListContainer extends Component {
+class UserProfileContainer extends Component {
   constructor() {
     super()
     this.state = { user: null }
   }
 
   componentDidMount() {
+    console.log("params: ", this.props.match)
     this.fetchUser(this.props.match.params.username)
   }
 
@@ -35,4 +36,4 @@ class UserListContainer extends Component {
   }
 }
 
-export default UserListContainer
+export default UserProfileContainer

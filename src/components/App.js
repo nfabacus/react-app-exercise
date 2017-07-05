@@ -80,7 +80,6 @@ class App extends Component {
           <Switch>
             <Route exact path="/" component={Dashboard} />
             <Route path="/users" component={UserListContainer} />
-            <Route path="/login" component={Login} />
             <Route path="/workshops" component={ WorkshopListContainer } />
             <Route component={ NotFound } />
           </Switch>

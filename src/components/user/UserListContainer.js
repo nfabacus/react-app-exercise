@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import UserList from './UserList'
-import { Route } from 'react-router-dom'
 
 class UserListContainer extends Component {
   constructor() {

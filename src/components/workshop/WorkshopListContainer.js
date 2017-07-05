@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
-import { Route } from 'react-router-dom'
-import WorkshopList from './workshopList'
+import WorkshopList from './WorkshopList'
 
 class WorkshopListContainer extends Component {
   constructor(){
@@ -23,8 +22,10 @@ class WorkshopListContainer extends Component {
   }
 
   render() {
+    console.log("Workshops: ", this.state.workshopList)
+    const { match, history } = this.props
     return (
-      <WorkshopList workshopList={this.state.workshopList}/>
+      <WorkshopList workshopList={this.state.workshopList}  match={match} history={history}/>
     );
   }
 }
