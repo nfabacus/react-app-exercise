@@ -2,15 +2,14 @@ import React, { Component } from 'react'
 import AppBar from 'material-ui/AppBar'
 import { pink700 } from 'material-ui/styles/colors'
 import NavDrawer from './layout/NavDrawer'
-import { spacing, typography } from 'material-ui/styles'
+import { typography } from 'material-ui/styles'
 import withWidth, { LARGE } from 'material-ui/utils/withWidth'
 import { Route, Switch } from 'react-router-dom'
 
 import UserListContainer from './user/UserListContainer'
 import WorkshopListContainer from './workshop/WorkshopListContainer'
 import Dashboard from './dashboard'
-import NotFound from './NotFound'
-import Login from './Login'
+
 
 class App extends Component {
   constructor() {
@@ -18,8 +17,6 @@ class App extends Component {
     this.state = {
       nav: { open: false }
     }
-    this.toggleNav = this.toggleNav.bind(this)
-    this.closeNav = this.closeNav.bind(this)
   }
 
   getStyles() {
@@ -42,11 +39,11 @@ class App extends Component {
     return styles
   }
 
-  toggleNav() {
+  toggleNav = () => {
     this.setState({ nav: { open: !this.state.nav.open } })
   }
 
-  closeNav() {
+  closeNav = () => {
     this.setState({ nav: { open: false } })
   }
 
@@ -80,8 +77,7 @@ class App extends Component {
           <Switch>
             <Route exact path="/" component={Dashboard} />
             <Route path="/users" component={UserListContainer} />
-            <Route path="/workshops" component={ WorkshopListContainer } />
-            <Route component={ NotFound } />
+            <Route path="/workshops" component={WorkshopListContainer} />
           </Switch>
         </div>
       </div>
